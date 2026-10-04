@@ -1,0 +1,50 @@
+﻿
+
+<!-- MENU NAVBAR -->
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+
+			<li >
+				<a href="index.php?a=GestHosting"><i class="glyphicon glyphicon-th-large"></i> <?php echo $osmw_menu_hosts;?> </a>
+			</li>
+				
+<!-- MENU ADMINISTRATOR NAVBAR (SETTINGS)-->			
+<?php if (isset($_SESSION['authentification']) && $_SESSION['privilege']>= 3){?>						
+			<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                   <i class="glyphicon glyphicon-wrench"></i> <?php echo $osmw_menu_admin;?> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+					<li <?php if ($_GET['a'] == "AdminHosts") {echo 'class="active"';} ?>>
+                        <a href="index.php?a=AdminHosts"> <i class="glyphicon glyphicon-folder-open"></i> <?php echo $osmw_menu_admin_Sims;?></a>
+                    </li>					
+					<li role="separator" class="divider"></li>
+					<li <?php if ($_GET['a'] == "AdminUsers") {echo 'class="active"';} ?>>
+                        <a href="index.php?a=AdminUsers"> <i class="glyphicon glyphicon-user"></i> <?php echo $osmw_menu_admin_Users;?></a>
+                    </li>
+					<li <?php if ($_GET['a'] == "AdminOsmw") {echo 'class="active"';} ?>>
+                        <a href="index.php?a=AdminOsmw"><i class="glyphicon glyphicon-cog"></i> <?php echo $osmw_menu_admin_Osmw;?></a>
+                    </li>
+                </ul>
+            </li>
+			
+<?php }?>				
+        </ul>
+
+<!-- MENU USER NAVBAR -->            
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i class="glyphicon glyphicon-user"></i> <strong><?php echo $_SESSION['login']; ?></strong> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+					 <li><a href="index.php?a=GestUsers"><i class="glyphicon glyphicon-check"></i> <?php echo $osmw_menu_user_login;?></a></li>
+					 <li><a href="index.php?a=logout"><i class="glyphicon glyphicon-log-out"></i> <?php echo $osmw_menu_user_logout;?></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+</nav>
